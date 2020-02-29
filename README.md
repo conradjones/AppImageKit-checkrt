@@ -1,3 +1,14 @@
+
+
+# Note
+
+This is a patched version of the original repo -> modified for libc++
+
+it also adds an environment variable to QT to correct hidpi scaling for "legacy apps"
+
+
+
+
 # The problem
 
 Some projects require newer C++ standards to build them. To keep the glibc dependency low you can

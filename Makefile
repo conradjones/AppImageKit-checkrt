@@ -12,7 +12,7 @@ test: $(EXEC_TEST) $(ENV_TEST)
 all: checkrt test
 
 clean:
-	-rm -f $(BIN) $(LIB) $(EXEC_TEST) $(ENV_TEST) *.o AppRun.c AppRun_patched.c
+	-rm -f $(BIN) $(LIB) $(EXEC_TEST) $(ENV_TEST) *.o AppRun.c
 
 $(BIN): AppRun_patched.o checkrt.o env.o
 
@@ -34,10 +34,10 @@ run_tests: $(EXEC_TEST) $(ENV_TEST)
 	./$(ENV_TEST)
 	./$(EXEC_TEST)
 
-AppRun_patched.c: AppRun.c
-	patch -p1 --output $@  < AppRun.c.patch
+#AppRun_patched.c: AppRun.c
+#	patch -p1 --output $@  < AppRun.c.patch
 
-AppRun.c:
-	wget -c "https://raw.githubusercontent.com/AppImage/AppImageKit/appimagetool/master/src/AppRun.c"
+#AppRun.c:
+#	wget -c "https://raw.githubusercontent.com/AppImage/AppImageKit/appimagetool/master/src/AppRun.c"
 
 .PHONY: checkrt test run_tests all clean

@@ -59,12 +59,12 @@ void checkrt(char *usr_in_appdir)
     char stdcxx_bundle_sym[LINE_SIZE], gcc_bundle_sym[LINE_SIZE];
     int stdcxx_sys_ver=1, stdcxx_bundle_ver=0, gcc_sys_ver=1, gcc_bundle_ver=0;
 
-    char *stdcxx_bundle_lib = "./" CXXDIR "/libstdc++.so.6";
+    char *stdcxx_bundle_lib = "./" CXXDIR "/libc++.so.1";
     char *gcc_bundle_lib = "./" GCCDIR "/libgcc_s.so.1";
     const char *format = "tr '\\0' '\\n' < '%s' | grep -e '%s' | tail -n1";
 
     if (access(stdcxx_bundle_lib, F_OK) == 0) {
-        f = popen("PATH=\"/sbin:$PATH\" ldconfig -p | grep 'libstdc++.so.6 (" LIBC6_ARCH ")' | awk 'NR==1{print $NF}'", "r");
+        f = popen("PATH=\"/sbin:$PATH\" ldconfig -p | grep 'libc++.so.1 (" LIBC6_ARCH ")' | awk 'NR==1{print $NF}'", "r");
         ret = fscanf(f, "%s", stdcxx_sys_lib); (void)ret;
         pclose(f);
 
